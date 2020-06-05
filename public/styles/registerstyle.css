@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow-x: hidden; */
+}
+
+html {
+    height: 100%;
+    font-size: 100%;
+  }
+  
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    width: 100%;
+}
+
+header{
+    width: 100%;
+    min-height: 100vh;
+    background-image:linear-gradient(to bottom right, red, yellow);
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(230, 80, 75);
+}
+
+.nav-logo{
+    margin-left: 1rem;
+}
+
+.nav-logo-link{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-background{
+    width: 60px;
+    height: 60px;
+}
+
+.nav-text{   
+}
+
+.nav-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav-list-item{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2rem;  
+}
+
+a{
+    text-decoration: none;
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 20px;
+    height: 2px;
+    background-color:#fff;
+    margin: 5px;
+}
+
+a:link,:visited{
+    color: white;
+}
+
+.card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header{
+    margin: 1rem;
+}
+
+.card-body{
+    margin: 1rem; 
+}
+
+.card-form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.form-control{
+    margin: 1rem;
+    width: 20vw;
+    height: 4vh;
+}
+
+.form-btn{
+    margin: 1rem;
+    width: 14vw;
+    height: 4vh;
+}
+
+@media screen and (max-width:768px)
+{
+    nav{
+        justify-content: space-between;
+    }
+    .nav-list{
+        background-image:linear-gradient(135deg,rgb(33, 228, 179),
+         rgb(218, 17, 17));
+        height: 88vh;
+        width:50%;
+        position: absolute;
+        top:12vh;
+        right:0px;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+    .nav-list-item{
+        margin: 1rem;
+    }
+    .burger{
+        display: block;
+    }
+
+    .card-form{
+        font-size: 0.9rem;
+    }
+
+    .form-control{
+        margin: 1rem;
+        width: 40vw;
+        height: 5vh;
+    }
+    
+    .form-btn{
+        margin: 1rem;
+        width: 30vw;
+        height: 6vh;
+    }
+}
+
+.nav-active{
+    display: block;
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media screen and (min-width:769px) and (max-width:1000px){
+    nav{
+        justify-content: space-between;
+    }
+
+    .nav-list-item{
+        margin-left: 0.7rem;  
+    }
+
+    .form-control{
+        margin: 1rem;
+        width: 30vw;
+        height: 5vh;
+    }
+    
+    .form-btn{
+        margin: 1rem;
+        width: 25vw;
+        height: 6vh;
+    }
+}
+@media screen and (min-width:1300px){
+    nav{
+        justify-content: space-between;
+    }
+    .nav-list-item{
+        margin-right: 2rem;  
+    }
+}
+

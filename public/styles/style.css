@@ -1,0 +1,280 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow-x: hidden; */
+}
+
+html {
+    height: 100%;
+    font-size: 100%;
+  }
+  
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    width: 100%;
+}
+
+header{
+    width: 100%;
+    min-height: 550px;
+    background-image:linear-gradient(to bottom right, red, yellow);
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(230, 80, 75);
+}
+
+.nav-logo{
+    margin-left: 1rem;
+}
+
+.nav-logo-link{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-background{
+    width: 60px;
+    height: 60px;
+}
+
+.nav-text{   
+}
+
+.nav-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav-list-item{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2rem;  
+}
+
+a{
+    text-decoration: none;
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 20px;
+    height: 2px;
+    background-color:#fff;
+    margin: 5px;
+}
+
+.describe{
+    width: 100%;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/background.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+.describe h2{
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.describe p{
+    font-size: 0.875rem;
+    font-weight: 500;
+    width: 70%;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.main-description{
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff;
+    padding: 6rem 1rem;
+}
+
+.main-description h3{
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.main-description p{
+    font-size: 0.875rem;
+    font-weight: 500;
+    width: 70%;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.main-cars{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(176, 231, 238);
+}
+
+.main-cars h2{
+   margin-top: 2rem;
+   margin-bottom: 2rem;
+   font-weight: 800;
+   font-size: 2rem;
+}
+
+.main-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.main-list-item{
+    width: 300px;
+    height: 300px;
+    display: block;
+}
+
+.main-list-item p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.main-item-link :hover,:focus{
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+}
+
+.main-item-link img{
+    width: 100%;
+}
+
+footer{
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(206, 188, 206);
+}
+
+.footer-made{
+    margin-left: 1rem;
+
+}
+
+.footer-list{
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+}
+
+.footer-list-item{
+    margin-right: 1rem;
+
+}
+
+a:link,:visited{
+    color: white;
+}
+
+.return{
+    background-color: rgb(82, 82, 167);
+    padding: 10px;
+    position: fixed;
+    bottom: 0px;
+    border: 1px solid black;
+    color: white;
+}
+
+@media screen and (max-width:768px)
+{
+    nav{
+        justify-content: space-between;
+    }
+    .nav-list{
+        background-image:linear-gradient(135deg,rgb(33, 228, 179),
+         rgb(218, 17, 17));
+        height: 88vh;
+        width:50%;
+        position: absolute;
+        top:12vh;
+        right:0px;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+    .nav-list-item{
+        margin: 1rem;
+    }
+    .burger{
+        display: block;
+    }
+
+    .main-description p{
+        font-size: 0.875rem;
+        width: 80%;
+    }
+
+.return{
+        display: none;
+    }
+}
+
+.nav-active{
+    display: block;
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media screen and (min-width:769px) and (max-width:1000px){
+    .nav-list-item{
+        margin-left: 0.7rem;  
+    }
+}
+@media screen and (min-width:1300px){
+
+    nav{
+        justify-content: space-between;
+    }
+    .nav-list-item{
+        margin-right: 3rem;  
+    }
+}
+
+@media screen and (max-width:460px){
+    .footer-list{
+        flex-direction: column;
+    }
+}

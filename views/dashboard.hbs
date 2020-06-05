@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/dashboardstyle.css">
+    <title>Strona</title>
+</head>
+
+<body>
+    <header id="hed">
+        <nav>
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link">
+                    <img src="/images/background-logo.png" alt="Background" class="logo-background">
+                    <h3 class="nav-text">SirCar</h3>
+                </a>
+            </div>
+
+            <ul class="nav-list">
+                <li class="nav-list-item"><a href="/">Home</a></li>
+                <li class="nav-list-item"><a href="/logout">Logout</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line1"></div>
+                <div class="line1"></div>
+            </div>
+        </nav>
+        <div class="card">
+            <div class="card-header">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="card-body">
+                <table class="tab">
+                    <tr class="tab_col">
+                        <th class="tab_head">User_Id</th>
+                        <th class="tab_head">Username</th>
+                        <th class="tab_head">Email</th>
+                    </tr>
+                    {{#each userslist }}
+                    <tr class="tab_col">
+                        <td class="tab_row">{{this.id}}</td>
+                        <td class="tab_row">{{this.username}}</td>
+                        <td class="tab_row">{{this.email}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </header>
+    <script src="/js/mobilemenu.js"></script>
+</body>
+
+</html>

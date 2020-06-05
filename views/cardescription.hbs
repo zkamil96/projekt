@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/dashboardstyle.css">
+    <title>Strona</title>
+</head>
+
+<body>
+    <header id="hed">
+        <nav>
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link">
+                    <img src="/images/background-logo.png" alt="Background" class="logo-background">
+                    <h3 class="nav-text">SirCar</h3>
+                </a>
+            </div>
+
+            <ul class="nav-list">
+                <li class="nav-list-item"><a href="/">Home</a></li>
+                <li class="nav-list-item"><a href="/logout">Logout</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line1"></div>
+                <div class="line1"></div>
+            </div>
+        </nav>
+        <div class="card">
+            <div class="card-header">
+                <h1>Cars</h1>
+            </div>
+            <div class="card-body">
+                <table class="tab">
+                    <tr class="tab_col">
+                        <th class="tab_head">Name</th>
+                        <th class="tab_head">Fuel</th>
+                        <th class="tab_head">Model</th>
+                        <th class="tab_head">Top Speed [km/h]</th>
+                        <th class="tab_head">Price [$]</th>
+                    </tr>
+                    {{#each carlist }}
+                    <tr class="tab_col">
+                        <td class="tab_row">{{this.name}}</td>
+                        <td class="tab_row">{{this.fuel}}</td>
+                        <td class="tab_row">{{this.model}}</td>
+                        <td class="tab_row">{{this.speed}}</td>
+                        <td class="tab_row">{{this.price}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </header>
+    <script src="/js/mobilemenu.js"></script>
+</body>
+
+</html>

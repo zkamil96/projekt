@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/loginstyle.css">
+    <title>Strona</title>
+</head>
+<body>
+    <header id="hed">
+        <nav>
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link">
+                    <img src="/images/background-logo.png" alt="Background" class="logo-background">
+                <h3 class="nav-text">SirCar</h3></a>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-list-item"><a href="/">Home</a></li>
+                <li class="nav-list-item"><a href="/register">Register</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line1"></div>
+                <div class="line1"></div>
+            </div>
+        </nav>
+        <div class="card">
+            <div class="card-header">
+                <h1>Login Form</h1>
+            </div>
+            {{#if message }}
+            <h4 class="alert">{{message}}</h4>
+            {{/if}}
+            <div class="card-body">
+                <form class="card-form" action="/auth/login" method="POST">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                    <button type="submit" class="form-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <script src ="/js/mobilemenu.js"></script>
+</body>
+</html>
