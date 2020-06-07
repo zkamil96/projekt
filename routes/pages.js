@@ -1,6 +1,9 @@
 const express = require('express');
 const db = require("../controllers/dbconnect");
+const users = require('../controllers/users');
+const cars = require('../controllers/cars');
 const router = express.Router();
+
 
 
 router.get('/', (req, res) => {
@@ -43,12 +46,11 @@ router.get('/logout', (req, res) => {
 router.get('/dashboard', (req, res) => {
     let user = req.session.admin;
     if (user) {
-        db.query('SELECT id, username, email FROM users', (error, result) => {
-            res.render('dashboard', {
+        users.find({}, function(err, result) {
+            res.render('dashboard',{
                 userslist: result
-            })
-        }
-        );
+            });
+         });
     }
     else {
         res.redirect('/');
@@ -58,11 +60,11 @@ router.get('/dashboard', (req, res) => {
 router.get('/cardescription', (req, res) => {
     let user = req.session.user;
     if (user){
-        db.query('SELECT id, name, fuel, model, speed, price FROM cars', (error, result) => {
-            res.render('cardescription', {
+        cars.find({}, function(err, result) {
+            res.render('cardescription',{
                 carlist: result
-            })
-        });
+            });
+         });
     }
     else {
         res.redirect('/');

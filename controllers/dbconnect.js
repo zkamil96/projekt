@@ -1,21 +1,12 @@
-const mysql = require("mysql");
-const util = require("util");
- 
-const db = mysql.createConnection({
-     host: process.env.DATABASE_HOST,
-     user: process.env.DATABASE_USER,
-     password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-});
+const db = require('mongoose');
 
-db.connect( (error) =>{ 
-     if(error){
-         console.log(error);
-     }else{
-         console.log("MYSQL Connected...");
-     }
-})
-
-db.query = util.promisify(db.query);
+try{
+     db.connect(process.env.DB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+}catch(error){
+    handleError(error);
+}
 
 module.exports = db;

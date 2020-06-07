@@ -1,80 +1,82 @@
 const bcrypt = require('bcrypt');
 const db = require("./dbconnect");
+const users = require('./users');
 
 exports.login = async (req, res) => {
-    try {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).render('login', {
+            return res.render('login', {
                 message: 'Please provide an email and password'
             })
         }
-
-        db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
-            if (!results) {
-                res.status(401).render('login', {
+        users.findOne({email: email}).then(result => {
+            if (!result) {
+                res.render('login', {
                     message: 'Email or password is incorrect'
                 })
             }
-            try {
-                if (await (bcrypt.compare(password, results[0].password))) {
-                    if (results[0].id === 1) {
-                        req.session.admin = results;
-                        res.redirect("/dashboard");
-                    }
-                    else {
-                        req.session.user = results;
-                        res.redirect("/logeduser");
-                    }
-                }else{
-                    res.status(401).render('login', {
-                        message: 'Email or password is incorrect'
-                    })
+            try{
+            if(bcrypt.compare(password, result.password)){
+                if (result._id == '5edba229b7d0bb3e986ed6f1') {
+                    req.session.admin = result;
+                    res.redirect("/dashboard");
+                }else {
+                    req.session.user = result;
+                    res.redirect("/logeduser");
                 }
-            } catch{
-                res.status(401).render('login', {
+            } else {
+                res.render('login', {
                     message: 'Email or password is incorrect'
                 })
             }
+        }catch{
+            res.render('login', {
+                message: 'Email or password is incorrect'
+            })
+        }
         })
-    } catch (error) {
-        console.log(error);
-    }
 }
 
 exports.register = (req, res) => {
     const { username, email, password, repassword } = req.body;
-
-    db.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
-        if (error) {
-            console.log(error);
-        }
-        if (username == '' || email == '' || password == '') {
-            return res.render('register', {
-                message: 'Fields cannot be empty'
-            })
-        }
-        if (results.length > 0) {
+  
+    if (!username || !email || !password || !repassword) {
+        return res.render('register', {
+            message: 'Fields cannot be empty'
+        });
+    }
+  
+    if (password != repassword) {
+        return res.render('register', {
+            message: 'Passwords must be the same'
+        });
+    }
+      users.findOne({ email: email }).then(result => {
+        if (result) {
             return res.render('register', {
                 message: 'That email is  already in use'
-            })
-        } else if (password !== repassword) {
-            return res.render('register', {
-                message: 'Passwords must be the same'
-            })
-        }
-
-        let hashedPassword = await bcrypt.hash(password, 8);
-
-        db.query('INSERT INTO users SET ?', { username: username, email: email, password: hashedPassword }, (error, results) => {
-            if (error) {
-                console.log(error);
-            } else {
-                return res.render('register', {
-                    message: 'User registered. You can login now'
+            });
+        } else {
+          const user = new users({
+            username,
+            email,
+            password
+          });
+  
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(user.password, salt, (err, hash) => {
+              if (err) throw err;
+              user.password = hash;
+              user.save()
+                .then(result => {
+                    return res.render('register', {
+                        message: 'User registered. You can login now'
+                    });
                 })
-            }
-        });
-    });
+                .catch(err => console.log(err));
+            });
+          });
+        }
+      });
 }
